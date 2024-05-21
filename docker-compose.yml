@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      APP_ENV: docker
+    volumes:
+      - .:/var/www
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    volumes:
+      - .db:/var/lib/mysql
+    ports:
+      - "3306:3306"
