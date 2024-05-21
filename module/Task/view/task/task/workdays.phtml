@@ -1,0 +1,12 @@
+<?php
+// module/Task/view/task/task/index.phtml:
+
+$title = 'workdays';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a class="btn btn-primary" href="<?= $this->url('task', ['action' => 'my']) ?>">Back to my tasks</a>
+</p>
+
+<h1>You can only create tasks on work days!</h1>

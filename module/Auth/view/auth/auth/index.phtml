@@ -1,0 +1,29 @@
+<?php
+// module/Task/view/user/user/index.phtml:
+
+$title = 'Users';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a class="btn btn-primary" href="<?= $this->url('auth', ['action' => 'add']) ?>">Add new user</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($users as $user) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($user->name) ?></td>
+        <td><?= $this->escapeHtml($user->email) ?></td>
+        <td>
+            <a class="btn btn-success" href="<?= $this->url('auth', ['action' => 'edit', 'id' => $user->id]) ?>">Edit</a>
+            <a class="btn btn-danger" href="<?= $this->url('auth', ['action' => 'delete', 'id' => $user->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
